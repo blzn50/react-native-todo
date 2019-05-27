@@ -3,6 +3,7 @@ import { Dimensions, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { addItem, removeCompleted, removeItem, toggleCompleted } from '../actions/todoAction';
 import Footer from '../components/Footer';
+import Input from '../components/Input';
 import List from '../components/List';
 import Title from '../components/Title';
 
@@ -41,6 +42,7 @@ class Index extends Component {
     return (
       <View style={styles.container}>
         <Title />
+        <Input onSubmit={this.onAddItem} />
         <List todos={this.props.todos} />
         <Footer />
       </View>
@@ -49,7 +51,6 @@ class Index extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('state: ', state);
   return {
     todos: state.todos,
   };
