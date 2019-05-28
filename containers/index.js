@@ -43,7 +43,7 @@ class Index extends Component {
       <View style={styles.container}>
         <Title />
         <Input onSubmit={this.onAddItem} />
-        <List todos={this.props.todos} />
+        <List todos={this.props.todos} onToggleCompleted={this.onToggleCompleted} onRemoveItem={this.onRemoveItem} />
         <Footer />
       </View>
     );

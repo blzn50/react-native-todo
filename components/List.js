@@ -16,19 +16,22 @@ const styles = StyleSheet.create({
   actions: {
     flexDirection: 'row',
   },
+  checkbox:{
+    
+  },
   completed: {
     backgroundColor: 'lightgray',
   },
   remove: {
     color: 'red',
-    fontSize: 18,
+    fontSize: 20,
   },
 });
 
 class List extends Component {
   renderTodo = (todo, i) => {
     const { onToggleCompleted, onRemoveItem } = this.props;
-    const todoStyle = todo.completed ? [styles.todo, styles.completed] : styles.todo;
+    const todoStyle = todo.completed ? [styles.checkbox, styles.completed] : styles.checkbox;
     return (
       <View key={i} style={styles.todo}>
         <Text>{todo.label}</Text>
@@ -38,7 +41,7 @@ class List extends Component {
             value={todo.completed}
             onValueChange={() => onToggleCompleted(i)}
           />
-          <TouchableOpacity onPress={() => onRemoveItem(i)}>
+          <TouchableOpacity  onPress={() => onRemoveItem(i)}>
             <Text style={styles.remove}>&times;</Text>
           </TouchableOpacity>
         </View>

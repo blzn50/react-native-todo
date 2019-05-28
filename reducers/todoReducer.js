@@ -7,6 +7,7 @@ const initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
   const { todos } = state;
+
   switch (type) {
     case types.ADD_ITEM:
       return {
@@ -17,7 +18,7 @@ export default (state = initialState, action) => {
     case types.REMOVE_ITEM:
       return {
         ...state,
-        todos: todos.filter((todo, i) => i !== action),
+        todos: todos.filter((todo, i) => i !== payload),
       };
 
     default:
