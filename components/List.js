@@ -13,11 +13,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'lightgray',
   },
+  label: { fontSize: 20 },
   actions: {
     flexDirection: 'row',
-  },
-  checkbox:{
-    
   },
   completed: {
     backgroundColor: 'lightgray',
@@ -31,17 +29,13 @@ const styles = StyleSheet.create({
 class List extends Component {
   renderTodo = (todo, i) => {
     const { onToggleCompleted, onRemoveItem } = this.props;
-    const todoStyle = todo.completed ? [styles.checkbox, styles.completed] : styles.checkbox;
+    const todoStyle = todo.completed ? [styles.todo, styles.completed] : styles.todo;
     return (
-      <View key={i} style={styles.todo}>
-        <Text>{todo.label}</Text>
+      <View key={i} style={todoStyle}>
+        <Text style={styles.label}>{todo.label.slice(0, 35).concat('..')}</Text>
         <View style={styles.actions}>
-          <CheckBox
-            style={todoStyle}
-            value={todo.completed}
-            onValueChange={() => onToggleCompleted(i)}
-          />
-          <TouchableOpacity  onPress={() => onRemoveItem(i)}>
+          <CheckBox value={todo.completed} onValueChange={() => onToggleCompleted(i)} />
+          <TouchableOpacity onPress={() => onRemoveItem(i)}>
             <Text style={styles.remove}>&times;</Text>
           </TouchableOpacity>
         </View>
@@ -53,7 +47,7 @@ class List extends Component {
     const { todos } = this.props;
     console.log('todos: ', todos);
     return (
-      <ScrollView contentContainerStyle={styles.contentContainer}>
+      <ScrollView style={styles.contentContainer}>
         <Text>Dummy Text</Text>
         {todos.map(this.renderTodo)}
       </ScrollView>

@@ -21,6 +21,13 @@ export default (state = initialState, action) => {
         todos: todos.filter((todo, i) => i !== payload),
       };
 
+    case types.TOGGLE_ITEM_COMPLETED:
+      return {
+        ...state,
+        todos: todos.map((todo, i) =>
+          i === payload ? { label: todo.label, completed: !todo.completed } : todo
+        ),
+      };
     default:
       return state;
   }
