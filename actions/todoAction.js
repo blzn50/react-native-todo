@@ -24,9 +24,8 @@ export const toggleCompleted = index => {
   };
 };
 
-export const removeCompleted = item => {
+export const removeCompleted = () => {
   return {
     type: types.REMOVE_COMPLETED,
-    payload: item,
   };
 };

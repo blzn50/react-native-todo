@@ -34,8 +34,8 @@ class Index extends Component {
     this.props.toggleCompleted(index);
   };
 
-  onRemoveCompleted = item => {
-    this.props.removeCompleted(item);
+  onRemoveCompleted = () => {
+    this.props.removeCompleted();
   };
 
   render() {
@@ -43,8 +43,12 @@ class Index extends Component {
       <View style={styles.container}>
         <Title />
         <Input onSubmit={this.onAddItem} />
-        <List todos={this.props.todos} onToggleCompleted={this.onToggleCompleted} onRemoveItem={this.onRemoveItem} />
-        <Footer />
+        <List
+          todos={this.props.todos}
+          onToggleCompleted={this.onToggleCompleted}
+          onRemoveItem={this.onRemoveItem}
+        />
+        <Footer onRemoveCompleted={this.onRemoveCompleted} />
       </View>
     );
   }

@@ -3,10 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const Footer = ({ onRemoveCompleted }) => (
   <View>
-    <TouchableOpacity
-      style={styles.footer}
-      // onPress={() => onRemoveCompleted}
-    >
+    <TouchableOpacity style={styles.footer} onPress={() => onRemoveCompleted()}>
       <Text style={styles.text}>Remove completed items</Text>
     </TouchableOpacity>
   </View>

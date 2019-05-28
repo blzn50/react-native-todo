@@ -28,6 +28,12 @@ export default (state = initialState, action) => {
           i === payload ? { label: todo.label, completed: !todo.completed } : todo
         ),
       };
+
+    case types.REMOVE_COMPLETED:
+      return {
+        ...state,
+        todos: todos.filter(todo => !todo.completed),
+      };
     default:
       return state;
   }
